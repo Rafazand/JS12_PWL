@@ -36,9 +36,15 @@ class FileUploadController extends Controller
         // }
 
         $request->validate([
-            'berkas' => 'required',
+            'berkas' => 'required|file|image|max:500 ',
         ]);
-        echo "File has been uploaded successfully";
+        $extfile= $request->berkas->getClientOriginalName();
+        $namaFile = 'web-'.time().'.'.$extfile;
+        $patch = $request->berkas->store('uploads',$namaFile );
+        echo "File has been uploaded successfully in :" . $patch;
+
+
+
 
 
 
