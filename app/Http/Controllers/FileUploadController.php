@@ -59,19 +59,29 @@ class FileUploadController extends Controller
 
         $namaFile = 'web-' . time() . '.' . $extfile;
 
+        $nama = $request->nama;
+
         $path = $request->berkas->move('public', $namaFile);
 
         $path = str_replace("\\","//",$path);
 
+        echo "nama  : " . $nama . "<br>";
+
         echo "Variable path berisi : " . $path . "<br>";
 
-        $pathBaru = asset('gambar/' . $namaFile);
+        $pathBaru = asset('public/' . $namaFile);
 
         echo "Proses upload file berhasil di : " . $path . "<br>";
 
         echo "<br>";
 
         echo "Tampilkan link : <a href='" . $pathBaru . "'>" . $pathBaru . "</a>";
+
+
+        //tampilkan gambar
+        echo "<br>";
+        echo "<img src='" . $pathBaru . "' width='200px'>";
+
 
 
 

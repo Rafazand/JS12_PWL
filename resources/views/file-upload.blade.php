@@ -12,7 +12,10 @@
         <form action="{{ route('file-upload') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3" >
+                <label for= 'nama' class="form-label">Nama</label>
+                <input type="text" name="nama" class="form-control" id="nama">
                 <label for= 'berkas' class="form-label">Pilih Berkas</label>
+
                 <input type="file" name="berkas" class="form-control" id="berkas">
                 @error('berkas')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
